@@ -1,0 +1,55 @@
+
+:root {
+    --bg-color: #003c66;
+    --main-color: #bad9e4;
+    --main-font: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: var(--main-font);
+}
+
+.navbar {
+    background-color: var(--main-color)
+}
+
+#logo {
+    height: 100%;
+}
+
+#logo img {
+    height: 100%;
+}
+
+
+@media only screen and (max-width: 500px) {
+
+    .navbar {
+        height: auto;
+        padding: 0.5rem 0.5rem;
+        margin-right: 0;
+    }
+
+    .navbar-nav{
+        margin-top: 25px;
+    }
+
+
+    .col-sm-6 {
+        padding: 0;
+    }
+
+    .navbar-brand{
+        margin-right: 0;
+    }
+
+    .navbar-brand img {
+        width: 100px;
+    }
+
+    button {
+        margin: 0rem .2rem;
+    }
+  }
