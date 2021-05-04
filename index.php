@@ -27,10 +27,10 @@ and open the template in the editor.
             }
         }
         
-        echo "<br>resultado funcion resta: <br>";
+        echo "<br>resultado funcion resta de 5 -3: <br>";
         echo (resta(5, 3) ."<br>");
         
-        echo "<br> resultado funcion par o impar: <br>";
+        echo "<br> resultado funcion par o impar (numero 17): <br>";
         parOimpar(17);
         
         
