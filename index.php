@@ -1,10 +1,13 @@
 <?php
-
     //https://www.youtube.com/watch?v=PHiu0JA9eqE
-
     include './connection.php';
-    include 'products.php';
-    include 'viewproducts.php';
+    include './table.php';
+    include './insereix.php';
+    // include 'viewproducts.php';
+
+    $table = new table();
+    $products = $table->getProducts();
+    // $table->close();
 ?>
 
 
@@ -23,55 +26,59 @@
   </head>
   <body>
 
-  <?php
-
-      $products = new ViewProduct();
-      $products->ViewAllProducts();
-    ?>
-
-
-
-
-
-    <!-- <div class='container-fluid'>
+    <div class='container-fluid'>
 
     <h1>Table of Products</h1>
 
       <table class="table table-dark table-striped">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Lart</th>
-            <th scope="col">Handle</th>
+            <th scope="col">ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Quantitat</th>
+            <th scope="col">Preu</th>
+            <th scope="col">Total</th>
           </tr>
         </thead>
         <tbody>
+        <!-- https://www.php.net/manual/en/control-structures.alternative-syntax.php -->
+          <?php foreach($products as $product): ?>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otte</td>
-            <td>@mdo</td>
+            <th scope="row"><?php echo $product['id'] ?></th>
+            <td><?php echo $product['nom'] ?></td>
+            <td><?php echo $product['quantitat'] ?></td>
+            <td><?php echo $product['preu'] ?></td>
+            <td><?php echo $product['preu']*$product['quantitat'] ?></td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          <?php endforeach; ?>
         </tbody> 
       </table>
 
-      <div class="container-fluid">
-        <button type="button" class="btn btn-primary">Add Product</button>
+      <div class="container-fluid my-5">
+          
+        <form action="insereix.php" method="post">  
+
+          <div class="row g-3">
+            <div class="col-sm-5">
+              <input type="text" class="form-control" placeholder="Product" aria-label="product" name="product">
+            </div>
+            <div class="col-sm">
+              <input type="number" class="form-control" placeholder="Quantitat" aria-label="quantitat" name="quantitat">
+            </div>
+            <div class="col-sm">
+              <input type="number" class="form-control" placeholder="Preu" aria-label="preu" name="preu">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary my-4">Add Product</button>
+        
+        <form>
+
+        
+        
       </div>
     
-    </div> -->
+    </div>
 
     
 

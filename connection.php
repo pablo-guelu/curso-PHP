@@ -22,9 +22,6 @@
                 return $conn;
             }
         }
-
-        // function disconnect () {
-        //     $conn->close();}
         
     }
 
@@ -39,11 +36,7 @@
     // $conn->query("DELETE FROM compra") or
     // die ($conn->error);
 
-    // $conn->query("INSERT INTO compra (nom, quantitat, preu) VALUES 
-    // ('leche', 1, 1.20), 
-    // ('jamon', 2, 1.50), 
-    // ('arroz', 1, 2.30)") or
-    // die ($conn->error);    
+  
 
     // echo 'data base intialized'
 ?>

@@ -1,8 +1,8 @@
 <?php
 
-    class products extends conn {
+    class table extends conn {
 
-        protected function getProducts() {
+        public function getProducts() {
             $sql = "SELECT * FROM compra";
             $result = $this->connect()->query($sql);
             $numRows = $result->num_rows;
@@ -25,8 +25,6 @@
             $this->connect()->quer($sql) or
             die ($conn->error);
         }
-
-
     }
 
 ?>
