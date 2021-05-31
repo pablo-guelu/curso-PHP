@@ -12,6 +12,7 @@
   </head>
     <body>
 
+        <!-- we connect to the database to fetch the currewnt data of the product selected -->
         <?php
 
             include './connection.php';
@@ -22,9 +23,13 @@
 
             $sql = 'SELECT * from compra WHERE id=' . $id;
 
-            $result = $product->create()->query($sql);
+            $connection = $product->create();
+            
+            $result = $connection->query($sql);
 
             $data = $result -> fetch_assoc();
+
+            $product->close($connection);
 
         ?>
 
@@ -34,8 +39,9 @@
 
             <div class="container-fluid my-5">
                 
-                <form action="" method="post">  
+                <form action="" method="post">
 
+                <!-- we use the "value" attribute so rows have the current info they contain in the database -->
                 <div class="row g-3">
                     <div class="col-sm-5">
                     <input type="text" class="form-control" value="<?php echo $data['nom'] ?>" aria-label="product" name="product" required="true">
@@ -60,6 +66,7 @@
 
         include_once './connection.php';
 
+        // checking if the post request has data
         if( isset($_POST['product']) && isset($_POST['quantitat']) && isset($_POST["preu"]) ) {
 
             $nom = $_POST["product"];
@@ -72,10 +79,15 @@
             $sql = "UPDATE compra SET nom = '$nom', quantitat = '$quantitat', preu = '$preu' WHERE id='$id' ";
             // echo $sql . "<br>";
 
+            // Updating the product data
             $connection = new conn();
+
             $editProduct = $connection->create();
+
             $editProduct->query($sql);
+
             $connection->close($editProduct);
+            
             header("location: index.php");
         }        
     ?>

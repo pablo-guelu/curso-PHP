@@ -6,12 +6,14 @@
     //https://www.youtube.com/watch?v=PHiu0JA9eqE
     include './connection.php';
     include './table.php';
-    // include './insereix.php';
-    // include 'viewproducts.php';
 
     $table = new table();
     $products = $table->getProducts();
-    // $table->close();
+
+    if (! $products) {
+      $table->addProducts();
+    } 
+
 ?>
 
 
@@ -46,7 +48,16 @@
         </thead>
         <tbody>
         <!-- https://www.php.net/manual/en/control-structures.alternative-syntax.php -->
-          <?php foreach($products as $product): ?>
+          <?php
+          
+          if (! $products) {
+            $products = array();
+          }
+
+          foreach($products as $product):
+          
+          ?>
+
           <tr>
             <th scope="row"><?php echo $product['id'] ?></th>
             <td><?php echo $product['nom'] ?></td>
@@ -62,9 +73,11 @@
         </tbody> 
       </table>
 
+      <h5>* If the table is empty just refresh your browser ;) </h5>
+
       <div class="container-fluid my-5">
           
-        <form action="./insereix.php">  
+        <form action="./insereix.php">
 
           <!-- <div class="row g-3">
             <div class="col-sm-5">
