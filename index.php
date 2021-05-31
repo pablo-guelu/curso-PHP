@@ -1,15 +1,18 @@
+
+<!-- php code that fetches the products data from the Database (calling table.php logic) -->
+
 <?php
+
     //https://www.youtube.com/watch?v=PHiu0JA9eqE
     include './connection.php';
     include './table.php';
-    include './insereix.php';
+    // include './insereix.php';
     // include 'viewproducts.php';
 
     $table = new table();
     $products = $table->getProducts();
     // $table->close();
 ?>
-
 
 
 <!doctype html>
@@ -22,7 +25,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Products Table</title>
   </head>
   <body>
 
@@ -38,6 +41,7 @@
             <th scope="col">Quantitat</th>
             <th scope="col">Preu</th>
             <th scope="col">Total</th>
+            <th style="text-align: center" scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -49,6 +53,10 @@
             <td><?php echo $product['quantitat'] ?></td>
             <td><?php echo $product['preu'] ?></td>
             <td><?php echo $product['preu']*$product['quantitat'] ?></td>
+            <td style="text-align: center">
+              <a href="./modificar.php?id=<?php echo $product['id'] ?>" class="btn btn-primary mx-4">Edit</a>
+              <a href="./eliminar.php?id=<?php echo $product['id'] ?>" class="btn btn-primary mx-4">Delete</a>
+            </td>
           </tr>
           <?php endforeach; ?>
         </tbody> 
@@ -56,9 +64,9 @@
 
       <div class="container-fluid my-5">
           
-        <form action="insereix.php" method="post">  
+        <form action="./insereix.php">  
 
-          <div class="row g-3">
+          <!-- <div class="row g-3">
             <div class="col-sm-5">
               <input type="text" class="form-control" placeholder="Product" aria-label="product" name="product">
             </div>
@@ -68,9 +76,9 @@
             <div class="col-sm">
               <input type="number" class="form-control" placeholder="Preu" aria-label="preu" name="preu">
             </div>
-          </div>
+          </div> -->
 
-          <button type="submit" class="btn btn-primary my-4">Add Product</button>
+          <button type="submit"  class="btn btn-primary my-4">New Product</button>
         
         <form>
 

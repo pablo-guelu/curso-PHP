@@ -8,13 +8,29 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <title>Add Product</title>
+    <title>Modify Product</title>
   </head>
     <body>
 
+        <?php
+
+            include './connection.php';
+        
+            $id = $_GET['id'];
+
+            $product = new conn();
+
+            $sql = 'SELECT * from compra WHERE id=' . $id;
+
+            $result = $product->create()->query($sql);
+
+            $data = $result -> fetch_assoc();
+
+        ?>
+
         <div class='container-fluid'>
 
-            <h1>New Product</h1>
+            <h1>Selected Product</h1>
 
             <div class="container-fluid my-5">
                 
@@ -22,17 +38,17 @@
 
                 <div class="row g-3">
                     <div class="col-sm-5">
-                    <input type="text" class="form-control" placeholder="Product" aria-label="product" name="product">
+                    <input type="text" class="form-control" value="<?php echo $data['nom'] ?>" aria-label="product" name="product" required="true">
                     </div>
                     <div class="col-sm">
-                    <input type="number" class="form-control" placeholder="Quantitat" aria-label="quantitat" name="quantitat">
+                    <input type="number" class="form-control" value="<?php echo $data['quantitat'] ?>" aria-label="quantitat" name="quantitat" required="true">
                     </div>
                     <div class="col-sm">
-                    <input type="number" class="form-control" placeholder="Preu" aria-label="preu" name="preu">
+                    <input type="number" class="form-control" value="<?php echo $data['preu'] ?>" aria-label="preu" name="preu" required="true">
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary my-4">Add Product</button>
+                <button type="submit" class="btn btn-primary my-4">Save Changes</button>
                 
                 <form>
                 
@@ -47,17 +63,20 @@
         if( isset($_POST['product']) && isset($_POST['quantitat']) && isset($_POST["preu"]) ) {
 
             $nom = $_POST["product"];
+            // echo $nom . "<br>";
             $quantitat = $_POST["quantitat"];
+            // echo $quantitat . "<br>";
             $preu = $_POST["preu"];
+            // echo $preu . "<br>";
 
-            $sql = "INSERT INTO compra (nom, quantitat, preu) VALUES ('$nom', '$quantitat', '$preu')";
+            $sql = "UPDATE compra SET nom = '$nom', quantitat = '$quantitat', preu = '$preu' WHERE id='$id' ";
+            // echo $sql . "<br>";
 
             $connection = new conn();
-            $newProduct = $connection->create();
-            $newProduct->query($sql);
-            $connection->close($newProduct);
+            $editProduct = $connection->create();
+            $editProduct->query($sql);
+            $connection->close($editProduct);
             header("location: index.php");
-
         }        
     ?>
 
@@ -74,4 +93,3 @@
     -->
   </body>
 </html>
-
