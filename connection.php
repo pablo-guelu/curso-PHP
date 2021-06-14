@@ -8,9 +8,9 @@
         private $table;
 
         function __construct() {
-            $this->host = 'localhost';
-            $this->user = 'pabloguelu';
-            $this->pwd = 'zinedine05';
+            $this->host = 'local';
+            $this->user = 'local';
+            $this->pwd = 'local';
             $this->table = 'products';
         }
 
