@@ -29,7 +29,8 @@
             ('jamon', 2, 1.50), 
             ('arroz', 1, 2.30)";
 
-            $this->create()->query($sql) or
+            $conn = $this->create();
+            $conn->query($sql) or
             die ($conn->error);
         }
     }
