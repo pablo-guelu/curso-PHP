@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "c3a54673-cab9-4137-bc1b-e29d5c4a0f47",
+		"name": "paises/departamentos Nivel 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "paises/mexico/departamentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/paises/mexico/departamentos",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"paises",
+						"mexico",
+						"departamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paises/mexico/departamentos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/paises/mexico/departamentos",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"paises",
+						"mexico",
+						"departamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paises/mexico/departamentos/Jalisco",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/paises/mexico/departamentos/Jalisco",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"paises",
+						"mexico",
+						"departamentos",
+						"Jalisco"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paises/mexico/departamentos/Jalisco",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/paises/mexico/departamentos/Jalisco",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"paises",
+						"mexico",
+						"departamentos",
+						"Jalisco"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paises/mexico/departamentos/Jalisco",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/paises/mexico/departamentos/Jalisco",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"paises",
+						"mexico",
+						"departamentos",
+						"Jalisco"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

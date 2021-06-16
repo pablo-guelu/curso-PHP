@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "f6898d0b-5f3a-4833-9c7b-233ea4546a50",
+		"name": "paises/departamentos Nivel 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "paises/mexico/departamentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/paises/mexico/departamentos",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"mexico",
+						"departamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paises/mexico/departamentos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/paises/mexico/departamentos",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"mexico",
+						"departamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paises/mexico/departamentos/Jalisco",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/paises/mexico/departamentos/Jalisco",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"mexico",
+						"departamentos",
+						"Jalisco"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paises/mexico/departamentos/Jalisco",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/paises/mexico/departamentos/Jalisco",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"mexico",
+						"departamentos",
+						"Jalisco"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paises/mexico/departamentos/Jalisco",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/paises/mexico/departamentos/Jalisco",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"paises",
+						"mexico",
+						"departamentos",
+						"Jalisco"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
