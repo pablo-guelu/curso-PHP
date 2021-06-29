@@ -12,6 +12,8 @@
   </head>
   <body>
 
+    <x-navbar/>
+
     <div class="container-fluid my-5">
         <h2>Today is: {{$date}}</h2>
     </div>

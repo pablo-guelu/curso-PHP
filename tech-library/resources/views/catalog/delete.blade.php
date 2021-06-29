@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,8 +29,15 @@
             </ul>
         </div>
     @endif
-    <br>
-    <br>
-    <h1>Lista de Libros</h1>
-</body>
-</html>
+
+        <h1> Borrar Libro {{$id}}</h1>
+                
+            <form action="{{ route('catalog.deletePost', ['id' => $id ]) }}" method="post">
+            <!-- https://laravel.com/docs/8.x/blade#method-field -->
+                @method('DELETE') 
+
+                <button type="submit" class="btn btn-primary my-4">Delete</button>
+                
+            <form>
+                            
+    </div>

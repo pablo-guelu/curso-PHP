@@ -221,6 +221,48 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "catalog/delete/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/catalog/delete/007",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"catalog",
+						"delete",
+						"007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "catalog/delete/id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/catalog/delete/007",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"catalog",
+						"delete",
+						"007"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

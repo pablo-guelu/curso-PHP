@@ -17,18 +17,16 @@ use App\Http\Controllers\TechLibraryController;
 |
 */
 
-Route::get('/', [TechLibraryController::class, 'home']);
+Route::get('/', [TechLibraryController::class, 'home'])->name('home');
 
 
 Route::get('login', [TechLibraryController::class, 'login']);
 
 
+Route::post('login', [TechLibraryController::class, 'loginPost']);
+
+
 //DATE Middleware added thorugh a route
-Route::post('login', function(Request $request) {
-    return 'Login Usuario (post)  date:  ' . $request['date'];
-})->middleware('date');
-
-
 Route::get('logout', function(Request $request) {
     return 'Logout Usuario    date: ' . $request['date'];
 })->middleware('date');
@@ -39,20 +37,32 @@ Route::post('logout', function(Request $request) {
 })->middleware('date');
 
 
-Route::get('catalog', [TechLibraryController::class, 'catalog']);
-
-
-Route::get('catalog/show/{id}', [TechLibraryController::class, 'show']);
-
+////// Create //////
 
 Route::get('catalog/create', [TechLibraryController::class, 'create']);
 
 
 Route::post('catalog/create', [TechLibraryController::class, 'createPost'])->name('catalog.create');
 
+////// Read //////
+
+Route::get('catalog', [TechLibraryController::class, 'catalog']);
+
+
+Route::get('catalog/show/{id}', [TechLibraryController::class, 'show']);
+
+
+////// Update ///////
 
 Route::get('catalog/edit/{id}', [TechLibraryController::class, 'edit']);
 
 
 Route::put('catalog/edit/{id}', [TechLibraryController::class, 'editPost'])->name('catalog.editPost');
 
+
+////// Delete //////
+
+Route::get('catalog/delete/{id}', [TechLibraryController::class, 'delete']);
+
+
+Route::delete('catalog/delete/{id}', [TechLibraryController::class, 'deletePost'])->name('catalog.deletePost');
