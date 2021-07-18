@@ -18,7 +18,7 @@ class EquipoPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class EquipoPolicy
      */
     public function view(User $user, Equipo $equipo)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class EquipoPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,11 @@ class EquipoPolicy
      */
     public function update(User $user, Equipo $equipo)
     {
-        return $user->role === 'admin';
+        if ($user->hasRole('admin') == 'admin'){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -65,7 +69,11 @@ class EquipoPolicy
      */
     public function delete(User $user, Equipo $equipo)
     {
-        //
+        if ($user->hasRole('admin') == 'admin'){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

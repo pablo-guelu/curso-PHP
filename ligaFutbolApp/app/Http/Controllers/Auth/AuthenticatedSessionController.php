@@ -28,11 +28,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+
+        // dd();
+
+        // 
+
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $username_cookie = cookie('usernameCookie', Auth::user()->name, 60);
+
+        // dd(Auth::user()->name);
+
+        return redirect('/')->withCookie($username_cookie);
     }
 
     /**

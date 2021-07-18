@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Partido;
 use App\Models\User;
-use Spatie\Permission\Models\Role;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PartidoPolicy
@@ -19,7 +18,7 @@ class PartidoPolicy
      */
     public function viewAny(User $user)
     {
-        return false;
+        return true;
     }
 
     /**
@@ -31,7 +30,7 @@ class PartidoPolicy
      */
     public function view(User $user, Partido $partido)
     {
-        //
+        return true;
     }
 
     /**
@@ -42,7 +41,7 @@ class PartidoPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -54,7 +53,7 @@ class PartidoPolicy
      */
     public function update(User $user, Partido $partido)
     {
-        if($user->hasRole('admin')) {
+        if ($user->hasRole('admin') == 'admin'){
             return true;
         } else {
             return false;
@@ -70,7 +69,11 @@ class PartidoPolicy
      */
     public function delete(User $user, Partido $partido)
     {
-        //
+        if ($user->hasRole('admin') == 'admin'){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

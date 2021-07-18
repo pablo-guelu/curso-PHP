@@ -8,6 +8,13 @@ use App\Models\User;
 
 class PartidosController extends Controller
 {
+
+    public function __construct() {
+
+        $this->authorizeResource(Partido::class, 'partido');
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -80,10 +87,14 @@ class PartidosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show(Partido $partido)
+    {   
         try {
-            $partido = Partido::find($id);
+
+            // $partido = Partido::find($id);
+            
+            // $this->authorize('view', $partido);
+            
             return view('partidos.show', ['partido' => $partido]);
         } catch (\Exception $exception) {
             $errorMessage = $exception->getMessage();
@@ -97,10 +108,10 @@ class PartidosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, User $user)
+    public function edit(User $user, Partido $partido)
     {
         try {
-            $partido = Partido::find($id);
+            // $partido = Partido::find($id);
             return view('partidos.edit', ['partido' => $partido, 'user' => $user]);
 
         } catch (\Exception $exception) {
@@ -116,7 +127,7 @@ class PartidosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Partido $partido)
     {
         $validated = $request->validate([
             'fecha' => 'required',
@@ -127,7 +138,7 @@ class PartidosController extends Controller
 
         try {
 
-            $partido = Partido::find($id)
+            $partido
             ->update([
                 'fecha' => $request->input('fecha'),
                 'lugar' => $request->input('lugar'),
@@ -152,10 +163,9 @@ class PartidosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Partido $partido)
     {
         try {
-            $partido = Partido::find($id);
             $partido->delete();
 
             return redirect('/partidos');

@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="form-check">
-                    <input type="checkbox" name="terminado" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" name="terminado" class="form-check-input" id="exampleCheck1" value="1">
                     <label class="form-check-label" for="exampleCheck1">Terminado</label>
                 </div>
                 

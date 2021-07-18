@@ -18,7 +18,8 @@ use App\Http\Controllers\EquiposController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+    // return dd($request);
 });
 
 Route::get('/dashboard', function () {
@@ -28,10 +29,14 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
-
 Route::group([ 'middleware' => 'auth' ], function () {
 
-    Route::resource('/partidos', PartidosController::class);
+    Route::resource('partidos', PartidosController::class);
 
-    Route::resource('/equipos', EquiposController::class);
+    Route::resource('equipos', EquiposController::class);
 });
+
+
+// Route::resource('partidos', PartidosController::class);
+
+// Route::resource('equipos', EquiposController::class);

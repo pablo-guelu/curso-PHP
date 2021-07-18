@@ -29,7 +29,7 @@
         <h1> Editar Partido </h1>
 
         <h4>  {{ $user->role }} </h4>
-        @can('update', $partido)
+
         <form action="/partidos/{{ $partido->id }}" method="post">
         @csrf
         @method('PUT')
@@ -69,7 +69,7 @@
                 <button type="submit" class="btn btn-primary my-4">Save</button>
                 
             <form>
-        @endcan                  
+                  
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->

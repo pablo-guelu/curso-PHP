@@ -15,7 +15,9 @@
     <x-navbar/>
 
     <div class="container-fluid my-5">
+        <a href="/">
         <h2>HOME</h2>
+        </a>
     </div>
 
     <div class='container-fluid'>
@@ -46,19 +48,23 @@
             <h3> {{ $equipo->id }}: {{ $equipo->nombre }}</h3>
             <br>
             <div class='container-fluid flex-row mb-2'>
+                @can ('update', $equipo)
                 <a href="/equipos/{{$equipo->id}}/edit" style="text-decoration: none">
                     <button type="button" class="btn btn-info">Editar equipo</button>
                 </a>
+                @endcan
                 <a href="/equipos/{{$equipo->id}}">
                     <button type="button" class="btn btn-secondary" style="text-decoration: none">Equipo Info</button>
                 </a>
             </div>
             <div class='container-fluid mb-4'>
+                @can ('delete', $equipo)
                 <form action="/equipos/{{$equipo->id}}" method="post">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger">Borrar equipo</button>
                 </form>
+                @endcan
             </div>
             
         @endforeach

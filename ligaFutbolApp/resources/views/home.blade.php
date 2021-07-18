@@ -12,8 +12,8 @@ body, html {
   background-size: cover;
   position: relative;
   color: white;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 25px;
+  /* font-family: "Courier New", Courier, monospace; */
+  font-size: 50px;
 }
 
 .topleft {
@@ -44,6 +44,10 @@ hr {
 .navbar {
     height: 5%;
 }
+
+a {
+  text-decoration: none;
+}
 </style>
 
 <!-- Bootstrap CSS -->
@@ -59,12 +63,21 @@ hr {
     
   </div>
   <div class="middle">
-    <h1>COMING SOON</h1>
-    <hr>
-    <p>35 days left</p>
+
+    <div>
+      <h1> La Liga App </h1>
+    </div>
+    
+    <a href="/partidos" style="text-decoration: none">
+        <button type="button" class="btn btn-success btn-lg">Partidos</button>
+    </a>
+    <a href="/equipos" style="text-decoration: none">
+        <button type="button" class="btn btn-success btn-lg">Equipos</button>
+    </a>
+
   </div>
   <div class="bottomleft">
-    <p>Some text</p>
+    <p></p>
   </div>
 </div>
 

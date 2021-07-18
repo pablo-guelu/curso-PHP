@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class EquiposController extends Controller
 {
+
+    public function __construct() {
+
+        $this->authorizeResource(Equipo::class, 'equipo');
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +63,7 @@ class EquiposController extends Controller
                 'nombre' => $request->input('name')
             ]);
 
-            return redirect('equipos/create');
+            return redirect('equipos');
         
         } catch (\Exception $exception) {
             $errorMessage = $exception->getMessage();
@@ -70,10 +77,9 @@ class EquiposController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Equipo $equipo)
     {
         try {
-            $equipo = Equipo::find($id);
             return view('equipos.show', ['equipo' => $equipo]);
         } catch (\Exception $exception) {
             $errorMessage = $exception->getMessage();
@@ -87,11 +93,11 @@ class EquiposController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Equipo $equipo)
     {
         try {
-            $partido = Equipo::find($id);
-            return view('equipos.edit', ['equipo' => $partido]);
+
+            return view('equipos.edit', ['equipo' => $equipo]);
 
         } catch (\Exception $exception) {
             $errorMessage = $exception->getMessage();
@@ -106,7 +112,7 @@ class EquiposController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Equipo $equipo)
     {
         $validated = $request->validate([
             'name' => 'required'
@@ -114,8 +120,7 @@ class EquiposController extends Controller
 
         try {
 
-            $equipo = Equipo::find($id)
-            ->update([
+            $equipo->update([
                 'nombre' => $request->input('name')
             ]);
 
@@ -133,14 +138,11 @@ class EquiposController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Equipo $equipo)
     {
         try {
-            $equipo = Equipo::find($id);
             $equipo->delete();
-
             return redirect('/equipos');
-
         } catch (\Exception $exception) {
             $errorMessage = $exception->getMessage();
             return view('errors.custom404', ['errorMessage' => $errorMessage]);
