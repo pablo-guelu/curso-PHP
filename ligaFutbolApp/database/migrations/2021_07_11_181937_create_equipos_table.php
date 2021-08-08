@@ -17,6 +17,10 @@ class CreateEquiposTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             // $table->string('estadio');
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+            
             $table->timestamps();
         });
     }

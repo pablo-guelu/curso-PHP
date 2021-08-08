@@ -16,8 +16,15 @@
 
     <div class="container-fluid my-5">
         <a href="/">
-        <h2>HOME</h2>
+            <h2>Home</h2>
         </a>
+
+        <br>
+        
+        <a href="/partidos">
+            <h2>Partidos</h2>
+        </a>
+        
     </div>
 
     <div class='container-fluid'>

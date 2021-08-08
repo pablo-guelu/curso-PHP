@@ -13,5 +13,5 @@ class Equipo extends Model
         return $this->belongsToMany(Partido::class);
     }
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'user_id'];
 }

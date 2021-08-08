@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Partido;
+use App\Models\Equipo;
 use App\Models\User;
+
+use Illuminate\Support\Facades\Auth; 
 
 class PartidosController extends Controller
 {
@@ -39,7 +42,7 @@ class PartidosController extends Controller
     public function create()
     {
         try {
-            return view('partidos.create');
+            return view('partidos.create', ['equipos' => Equipo::all()]);
         } catch (\Exception $exception) {
             $errorMessage = $exception->getMessage();
             return view('errors.custom404', ['errorMessage' => $errorMessage]);
@@ -54,6 +57,9 @@ class PartidosController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd(Auth::user()->id);
+
         $validated = $request->validate([
             'fecha' => 'required',
             'lugar' => 'required',
@@ -63,7 +69,7 @@ class PartidosController extends Controller
 
         try {
 
-            $employee = Partido::create([
+            $partido = Partido::create([
                 'fecha' => $request->input('fecha'),
                 'lugar' => $request->input('lugar'),
                 'terminado' => $request->input('terminado'),
@@ -71,6 +77,7 @@ class PartidosController extends Controller
                 'goles_local' => $request->input('goles-local'),
                 'equipo_visita' => $request->input('visita'),
                 'goles_visita' => $request->input('goles-visita'),
+                'user_id' => Auth::user()->id,
             ]);
 
             return redirect('partidos');
@@ -112,7 +119,7 @@ class PartidosController extends Controller
     {
         try {
             // $partido = Partido::find($id);
-            return view('partidos.edit', ['partido' => $partido, 'user' => $user]);
+            return view('partidos.edit', ['partido' => $partido, 'user' => $user, 'equipos' => Equipo::all()]);
 
         } catch (\Exception $exception) {
             $errorMessage = $exception->getMessage();

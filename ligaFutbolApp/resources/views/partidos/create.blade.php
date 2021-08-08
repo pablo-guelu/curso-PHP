@@ -46,20 +46,46 @@
                 </div>
                 
                 <div class="row g-3 my-3">
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control" placeholder="nombre equipo local" aria-label="name" name="local">
+
+                    <div class="form-group col-sm-3">
+                        <label for="equipoLocal">Equipo Local</label>
+                        <select class="form-control my-2" id="equipoLocal" name="local">
+                            @if ($equipos)
+                                @foreach ($equipos->all() as $equipo)
+                                    <option>{{ $equipo -> nombre }}</option>
+                                @endforeach
+                            @else
+                            <option>Añada equipos a la base de datos</option>
+                            @endif
+                        </select>
                     </div>
+
                     <div class="col-sm-1">
-                        <input type="number" class="form-control" placeholder="goles" aria-label="department" name="goles-local">
+                        <label for="goles-local">goles local</label>
+                        <input type="number" class="form-control my-2" placeholder="goles" aria-label="department" name="goles-local">
                     </div>
                 </div>
 
+
                 <div class="row g-3 my-3">
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control" placeholder="nombre equipo visitante" aria-label="name" name="visita">
+
+                    <div class="form-group col-sm-3">
+                        <label for="equipoVisitante">Equipo Visitante</label>
+                        <select class="form-control my-2" id="equipoVisitante" name="visita">
+                            @if ($equipos)
+
+                            @foreach ($equipos->all() as $equipo)
+                                <option>{{ $equipo -> nombre }}</option>
+                            @endforeach
+                        @else
+                            <option>Añada equipos a la base de datos</option>
+                        @endif
+                        </select>
                     </div>
+
                     <div class="col-sm-1">
-                        <input type="number" class="form-control" placeholder="goles" aria-label="department" name="goles-visita">
+                        <label for="goles-visita">goles visitante</label>
+                        <input type="number" class="form-control my-2" placeholder="goles" aria-label="department" name="goles-visita">
                     </div>
                 </div>
 

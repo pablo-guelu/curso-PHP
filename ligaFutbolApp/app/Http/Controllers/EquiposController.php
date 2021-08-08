@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Equipo;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth; 
 
 use Illuminate\Http\Request;
 
@@ -60,7 +62,8 @@ class EquiposController extends Controller
         try {
 
             $equipo = Equipo::create([
-                'nombre' => $request->input('name')
+                'nombre' => $request->input('name'),
+                'user_id' => Auth::user()->id
             ]);
 
             return redirect('equipos');

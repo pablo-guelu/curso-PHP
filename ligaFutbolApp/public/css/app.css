@@ -46,6 +46,7 @@ Sections
 Remove the margin in all browsers.
 */
 
+
 body {
   margin: 0;
 }
@@ -66,6 +67,7 @@ body {
 		'Apple Color Emoji',
 		'Segoe UI Emoji';
 }
+
 
 /*
 Grouping content

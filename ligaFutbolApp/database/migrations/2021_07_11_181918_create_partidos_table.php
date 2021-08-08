@@ -22,6 +22,10 @@ class CreatePartidosTable extends Migration
             $table->boolean('terminado')->nullable();
             $table->integer('goles_local')->nullable();
             $table->integer('goles_visita')->nullable();
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

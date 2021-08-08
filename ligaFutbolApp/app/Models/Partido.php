@@ -13,5 +13,5 @@ class Partido extends Model
         return $this->belongsToMany(Equipo::class);
     }
 
-    protected $fillable = ['fecha', 'lugar', 'terminado', 'equipo_local', 'goles_local', 'equipo_visita', 'goles_visita'];
+    protected $fillable = ['fecha', 'lugar', 'terminado', 'equipo_local', 'goles_local', 'equipo_visita', 'goles_visita', 'user_id'];
 }

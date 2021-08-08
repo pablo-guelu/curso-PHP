@@ -49,6 +49,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        $username_cookie = cookie('usernameCookie', Auth::user()->name, 60);
+
+        return redirect(RouteServiceProvider::HOME)->withCookie($username_cookie);
     }
 }

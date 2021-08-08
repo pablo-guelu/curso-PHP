@@ -16,7 +16,13 @@
 
     <div class="container-fluid my-5">
         <a href="/">
-            <h2>HOME</h2>
+            <h2>Home</h2>
+        </a>
+
+        <br>
+        
+        <a href="/equipos">
+            <h2>Equipos</h2>
         </a>
         
     </div>
@@ -48,7 +54,12 @@
 
     <div class='container-fluid'>
         @foreach ($partidos as $partido)
-            <h3>{{ $partido->fecha }} {{ $partido->equipo_local }} vs {{ $partido->equipo_visita }}</h3>
+            <h3>{{ $partido->goles_local }} {{ $partido->equipo_local }} vs {{ $partido->equipo_visita }} {{ $partido->goles_visita }}</h3>
+            @if ( $partido->terminado )
+                <h5>(finalizado)</h5>
+            @else
+                <h5>(por jugar)</h5>
+            @endif
             <br>
             <div class='container-fluid flex-row mb-2'>
                 @can ('update', $partido)

@@ -53,10 +53,10 @@ class PartidoPolicy
      */
     public function update(User $user, Partido $partido)
     {
-        if ($user->hasRole('admin') == 'admin'){
+        if ($user->hasRole('admin') == 'admin') {
             return true;
         } else {
-            return false;
+            return $user->id == $partido->user_id;
         }
     }
 
@@ -69,10 +69,10 @@ class PartidoPolicy
      */
     public function delete(User $user, Partido $partido)
     {
-        if ($user->hasRole('admin') == 'admin'){
+        if ($user->hasRole('admin') == 'admin') {
             return true;
         } else {
-            return false;
+            return $user->id == $partido->user_id;
         }
     }
 

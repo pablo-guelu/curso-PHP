@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
+use App\Models\Partido;
+use App\Models\Equipo;
+
 
 class User extends Authenticatable
 {
@@ -42,4 +45,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function partidos() {
+        return $this->hasMany(Partido::class);
+    }
+
+    public function equipos() {
+        return $this->hasMany(Equipo::class);
+    }
 }

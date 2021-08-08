@@ -53,10 +53,10 @@ class EquipoPolicy
      */
     public function update(User $user, Equipo $equipo)
     {
-        if ($user->hasRole('admin') == 'admin'){
+        if ($user->hasRole('admin') == 'admin') {
             return true;
         } else {
-            return false;
+            return $user->id == $equipo->user_id;
         }
     }
 
@@ -69,10 +69,10 @@ class EquipoPolicy
      */
     public function delete(User $user, Equipo $equipo)
     {
-        if ($user->hasRole('admin') == 'admin'){
+        if ($user->hasRole('admin') == 'admin') {
             return true;
         } else {
-            return false;
+            return $user->id == $equipo->user_id;
         }
     }
 

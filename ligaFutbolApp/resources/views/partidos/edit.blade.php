@@ -49,20 +49,45 @@
                 </div>
                 
                 <div class="row g-3 my-3">
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control" placeholder="nombre equipo local" aria-label="name" name="local" value="{{$partido->equipo_local}}">
+
+                    <div class="form-group col-sm-3">
+                        <label for="equipoLocal">Equipo Local</label>
+                        <select class="form-control my-2" id="equipoLocal" name="local">
+                        @foreach ($equipos->all() as $equipo)
+                            @if ( $partido -> equipo_local  ==  $equipo -> nombre )
+                                <option selected>{{$partido -> equipo_local}}</option>
+                            @else
+                                <option>{{ $equipo -> nombre }}</option>
+                            @endif
+                        @endforeach
+                        </select>
                     </div>
+
                     <div class="col-sm-1">
-                        <input type="number" class="form-control" placeholder="goles" aria-label="department" name="goles-local" value="{{$partido->goles_local}}">
+                        <label for="goles-local">goles local</label>
+                        <input type="number" class="form-control my-2" placeholder="goles" aria-label="department" name="goles-local">
                     </div>
                 </div>
 
+
                 <div class="row g-3 my-3">
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control" placeholder="nombre equipo visitante" aria-label="name" name="visita" value="{{$partido->equipo_visita}}">
+
+                    <div class="form-group col-sm-3">
+                        <label for="equipoVisitante">Equipo Visitante</label>
+                        <select class="form-control my-2" id="equipoVisitante" name="visita">
+                        @foreach ($equipos->all() as $equipo)
+                            @if ( $partido -> equipo_visita  ==  $equipo -> nombre )
+                                <option selected>{{$partido -> equipo_visita}}</option>
+                            @else
+                                <option>{{ $equipo -> nombre }}</option>
+                            @endif
+                        @endforeach
+                        </select>
                     </div>
+
                     <div class="col-sm-1">
-                        <input type="number" class="form-control" placeholder="goles" aria-label="department" name="goles-visita" value="{{$partido->goles_visita}}">
+                        <label for="goles-visita">goles visitante</label>
+                        <input type="number" class="form-control my-2" placeholder="goles" aria-label="department" name="goles-visita">
                     </div>
                 </div>
 
