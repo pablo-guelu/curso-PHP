@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use App\Models\User;
 
-class PassportController extends Controller
+class AuthController extends Controller
 {
     public function register(Request $request) {
         $request->validate([
@@ -23,9 +23,11 @@ class PassportController extends Controller
 
         $user->assignRole('client');
 
+        auth()->login($user);
+
         $token = $user->createToken('Personal Access Token')->accessToken;
 
-        return response()->json(['token' => $token], 200);
+        return redirect('/');
     }
 
     public function login (Request $request) {
@@ -37,16 +39,22 @@ class PassportController extends Controller
 
         if (auth()->attempt($data)) {
             $token = auth()->user()->createToken('Personal Access Token')->accessToken;
-            return response()->json(['token' => $token], 200);
+            return redirect('/');
         } else {
-            return response()->json(['error' => 'unathorized'], 401);
+            return response()->json(['error' => 'unauthorized'], 401);
         }
 
     }
 
-    public function logout(Request $request) {
-        $token = auth()->user()->token();
-        $token->revoke();
-        return response()->json([ 'message' => 'logged out'], 200);
+    public function logout (Request $request) {
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+
     }
 }

@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "548cce3e-2e5f-4a47-9bf9-4dce86a7645f",
+		"name": "whiteCollarStores",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin@admin.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stores List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGUzNzI3MWY1MmVhM2FlY2U5MmNiMGJjZTViZjE2MTA2MzEwMzViZDE1ZGExN2Q3NDNhOTI1MDI0MWMxMGJlMGE1Nzk0YjBlYTNjYzY4ZjgiLCJpYXQiOjE2MzEwNjY1OTguMzEyNjA1LCJuYmYiOjE2MzEwNjY1OTguMzEyNjA5LCJleHAiOjE2NjI2MDI1OTguMzAyNjgyLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.lOgWiJrBsyI4rwqkT4K1EIckyRqKRVkzHuSlvyc8zqTuQDNauhLKMbB6iyQ2V0MsikV1LkT7rjRfBQYfBGG-AuJqfT4OyKJVjr5Fu3APPImPHbuNR584mFQc-uXQlKFCR09iJVHPBGCozDYpiOq6l_4KLt4TsyTlOfEJNGD3xkYOX3t06SWjBXabtmdip89FNiNoV3WDDCvB2sfysrUr92bZ2jutmG-J2Rq6WgsQ8LWZj9f9RKq0UcWBzN6dcqTTbrOfVxy3WUkR1DvXMo0unlD8vWZAoJ8XkptFHmUuH5a_o69wlp-ENL7zqlSpt2TjluaTTnE2UsQMOECHs4Z8fLr2gsrshqhOBvq25BfeKRmFcwnhWhnxymJdD5DpiVU8GFtzP5vgMeCM4FIUbOTizHgz1GZgLwyOHIXenpOONE7rSE5yzIHo9k0op7jfMFkTfQplNL2YlsY1dIizvRASvIwTAeB9AxpAWCVCfPFrRsZIwqElE2iRxnEk0pgz5f76vHmTddteQea6xXFpxi5fbnoKbhtoO2FpFhrvX7xpNKj60P5yx_7w0M2FAabQiWKI2cg03Q5H_v1Q0Wi_xmtEyddrRgIYJsHAcT-onOyhN-zWPM8MfHpuxJw8oiZdIoSR_mPn9laRDHKmyUcabjJ5zIpSpkecSVMz7d97r8KShQE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/stores",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"stores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Store",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzdjYzlhMDg4ZWU1ZDg2MjFiNGFhZWYzNzY5NzlhYTU1YzEwNWZmM2JjYzAwN2M1MjQyNmJmMjhjOGQxOWIzNTYwNjE2ZThmMDhhMThhYzQiLCJpYXQiOjE2MzEwNjc1MzcuOTkzNjY3LCJuYmYiOjE2MzEwNjc1MzcuOTkzNjcsImV4cCI6MTY2MjYwMzUzNy45ODQzNzEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.bmn0UEENYu7zhYgDdVGkVu_obfdSTSrdI6VbiYNekcVimcbOLxfuk3bbFxwwhN8qonzV-74LJB4oBTAZvzi4qm3LX2nsKiri33TXkanjhLcpNikPIvasHR3f6h7hhkkBFOqAu9do343MhpnoMOlySVTzz01A2MHiv93sz6hcNIoHDxNXG_hyEK4zyyrIF6lOTyjAR5hFVhvkel-rWcuZ2IH54ShfbvNHNoAm23-tgvokN7JZkh-I4Ve8xxjT6LHukYlZnQFMog_AWsOWNi0KINukVtjSn5psmZl59XDPY366Jedw7CawaBCIsPEvzH2xXrK11x_KpbqsF7YXkFVABCHkHen5N3iYasUeZCdsh9KIvnIUSx5VMkdXuY5nhHJ1HR_CiD-pPv0FCVjbHVOlcqq_9RHNO6IVVIhCmYjZ9s4Fixg1zBDWe092faXqySYCenNyVfHa4iZ22NIrDIYyhQVQNt2TiXkmoSSinkTmLSdeOfjvc6vXKejn-LLQIvrFuFS2s8cOjw7K2dTypgHuIi4i_es4tSSOQyQ9lc1yn7M7Sd-6zxOvFiEq94bR6fK8DGc7llPZxTgjEHsp_bCgdaGerpNpjrzMME3Zg7Gma07motrWlSwpNCFgOl5oiBeMV_kM1BZLSxE723-U2FGm_CtgbwKdac0ZLPrTF_9FzSc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "some name",
+							"type": "text"
+						},
+						{
+							"key": "paints_capacity",
+							"value": "30",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/stores",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"stores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting paints from Store",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/stores/1/paints",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"stores",
+						"1",
+						"paints"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating Paint in a Store",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzdjYzlhMDg4ZWU1ZDg2MjFiNGFhZWYzNzY5NzlhYTU1YzEwNWZmM2JjYzAwN2M1MjQyNmJmMjhjOGQxOWIzNTYwNjE2ZThmMDhhMThhYzQiLCJpYXQiOjE2MzEwNjc1MzcuOTkzNjY3LCJuYmYiOjE2MzEwNjc1MzcuOTkzNjcsImV4cCI6MTY2MjYwMzUzNy45ODQzNzEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.bmn0UEENYu7zhYgDdVGkVu_obfdSTSrdI6VbiYNekcVimcbOLxfuk3bbFxwwhN8qonzV-74LJB4oBTAZvzi4qm3LX2nsKiri33TXkanjhLcpNikPIvasHR3f6h7hhkkBFOqAu9do343MhpnoMOlySVTzz01A2MHiv93sz6hcNIoHDxNXG_hyEK4zyyrIF6lOTyjAR5hFVhvkel-rWcuZ2IH54ShfbvNHNoAm23-tgvokN7JZkh-I4Ve8xxjT6LHukYlZnQFMog_AWsOWNi0KINukVtjSn5psmZl59XDPY366Jedw7CawaBCIsPEvzH2xXrK11x_KpbqsF7YXkFVABCHkHen5N3iYasUeZCdsh9KIvnIUSx5VMkdXuY5nhHJ1HR_CiD-pPv0FCVjbHVOlcqq_9RHNO6IVVIhCmYjZ9s4Fixg1zBDWe092faXqySYCenNyVfHa4iZ22NIrDIYyhQVQNt2TiXkmoSSinkTmLSdeOfjvc6vXKejn-LLQIvrFuFS2s8cOjw7K2dTypgHuIi4i_es4tSSOQyQ9lc1yn7M7Sd-6zxOvFiEq94bR6fK8DGc7llPZxTgjEHsp_bCgdaGerpNpjrzMME3Zg7Gma07motrWlSwpNCFgOl5oiBeMV_kM1BZLSxE723-U2FGm_CtgbwKdac0ZLPrTF_9FzSc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "some paint",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "some author",
+							"type": "text"
+						},
+						{
+							"key": "entry",
+							"value": "2021-05-22",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "500",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "https://via.placeholder.com/640x480.png/0044cc?text=corporis",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/stores/3/paints",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"stores",
+						"3",
+						"paints"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete all paints from a Store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/stores/1/paints/delete",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"stores",
+						"1",
+						"paints",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

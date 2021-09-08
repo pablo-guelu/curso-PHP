@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Paint;
 use App\Models\Store;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PaintController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->authorizeResource(Paint::class, 'paint');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -50,11 +59,15 @@ class PaintController extends Controller
         $paint->title = $request->title;
         $paint->author = $request->author;
         $paint->entry = $request->entry;
+        $paint->image = $request->image;
+        $paint->price = $request->price;
         $paint->store_id = $id;
 
         $paint->save();
 
-        return $paint;
+        // $paint = Paint::create($request->all());
+
+        return response()->json($paint);
     }
 
     /**
@@ -101,7 +114,7 @@ class PaintController extends Controller
 
         $paint->save();
 
-        return $paint;
+        return response()->json($paint);
     }
 
     /**
@@ -110,19 +123,18 @@ class PaintController extends Controller
      * @param  \App\Models\Paint  $paint
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $paint)
+    public function destroy($id, Paint $paint)
     {
-        $store = Store::find($id);
-        $paintToDelete = Paint::find($paint);
-        $paintToDelete->delete();
+        $paint->delete();
 
-        return 'Paint ' . $paint . ' deleted from ' . 'store ' . $store->name;
+        return 'Paint ' . $paint->name . ' deleted';
     }
 
     // this method deletes all paints
-    public function destryAll() {
-        Paints::all()->delete();
-    }
+    public function destroyAll($id) {
 
+        $this->authorize('deleteAll', Paint::class);
+        Paint::where('store_id', $id)->delete();
+    }
 
 }

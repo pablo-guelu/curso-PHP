@@ -25,6 +25,8 @@ class PaintFactory extends Factory
             'title' => $this->faker->words(3, true),
             'author' => $this->faker->name(),
             'entry' => $this->faker->dateTime(),
+            'image' => $this->faker->imageURL(),
+            'price' => $this->faker->numberBetween(400, 5000),
         ];
     }
 }

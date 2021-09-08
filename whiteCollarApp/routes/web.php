@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::middleware(['auth:api'])->group( function() {
+
+    Route::get('/paints/{storeid?}', function ($storeid = null) {
+        return view('paintsHome');
+    });
+    
+    Route::get('stores', function () {
+        return view('storesHome');
+    });
+
+// });
+
+
+
+Route::get('login', function () {
+    return view('auth.login');
+});
+
+Route::get('register', function () {
+    return view('auth.register');
+});
+
+Route::post('login', [AuthController::class, 'login']);
+
+Route::post('logout', [AuthController::class, 'logout']);
+
+Route::post('register', [AuthController::class, 'register']);

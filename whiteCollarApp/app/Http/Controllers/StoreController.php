@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Store::class, 'store');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +53,7 @@ class StoreController extends Controller
 
         $store->save();
 
-        return $store;
+        return response()->json($store);
     
     }
 
@@ -92,7 +98,7 @@ class StoreController extends Controller
 
         $store->save();
 
-        return $store;
+        return response()->json($store);
     }
 
     /**
@@ -103,6 +109,9 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
+        // $storeToDelete = Store::find($store);
         $store->delete();
+
+        return 'store ' . $store->name . ' deleted';
     }
 }

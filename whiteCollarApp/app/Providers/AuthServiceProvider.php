@@ -6,6 +6,10 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
 
+use App\Policies\StorePolicy;
+use App\Policies\PaintPolicy;
+
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -15,6 +19,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Paint::class => PaintPolicy::class,
+        Store::class => StorePolicy::class,
     ];
 
     /**

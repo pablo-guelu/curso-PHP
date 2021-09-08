@@ -18,6 +18,8 @@ class CreatePaintsTable extends Migration
             $table->string('title');
             $table->string('author')->nullable();
             $table->dateTime('entry', $precision = 0);
+            $table->string('image')->nullable();
+            $table->integer('price');
             $table->unsignedBigInteger('store_id')->nullable();
             $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
             $table->timestamps();
