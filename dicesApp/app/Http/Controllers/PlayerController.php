@@ -8,6 +8,8 @@ use App\Http\Resources\UserCollection;
 use App\Models\Turn;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Gate;
+
 class PlayerController extends Controller
 {
     /**
@@ -100,7 +102,40 @@ class PlayerController extends Controller
         //
     }
 
+
+    // Play as an anonymous player
+    public function playAnonymous(Request $request) {
+        $request -> validate([
+            'dice1' => 'required|integer|between:1,6',
+            'dice2' => 'required|integer|between:1,6',
+        ]);
+
+        $dice1 = $request->dice1;
+        $dice2 = $request->dice2;
+        $seven = ($dice1 + $dice2 == 7 ? true : false);
+
+        $play = Turn::create([
+            'dice1' => $dice1,
+            'dice2' => $dice2,
+            'seven' => $seven,
+        ]);
+
+        return response()->json([
+            'play' => $play,
+            'code' => 200,
+        ]);
+    }
+
+
     public function play($id, Request $request) {
+
+
+        // This Gate will make sure the current authenticated user is making a play on his own record
+        // (No other players records)
+        if (! Gate::allows('player-or-admin', $id)) {
+            abort(403);
+        }
+
         $request -> validate([
             'dice1' => 'required|integer|between:1,6',
             'dice2' => 'required|integer|between:1,6',
@@ -135,6 +170,13 @@ class PlayerController extends Controller
     }
 
     public function deletePlays ($id) {
+
+        // This Gate will make sure the current authenticated user is deleting only his game
+        // (No other players games)
+        if (! Gate::allows('player-or-admin', $id)) {
+            abort(403);
+        }
+
         $plays = Turn::where('user_id', $id)->get();
         $plays->each->delete();
 
@@ -144,6 +186,12 @@ class PlayerController extends Controller
 
 
     public function updateName ($id, Request $request) {
+
+        // Only the admin can update a player's name
+        if (! Gate::allows('admin-only', $id)) {
+            abort(403);
+        }
+
         $user = User::where('id', $id)->first();
 
         $request->validate([
@@ -157,11 +205,24 @@ class PlayerController extends Controller
         return response()->json(['message'=>'Username updated', 'code'=>200]);
     }
 
+    public function getPlaysAnonymous () {
+
+        $plays = Turn::where('user_id', null)->latest()->get();
+
+        return response()->json(['plays'=>$plays, 'code'=>200]);
+    }
+
 
 
     public function getPlays ($id) {
 
-        $plays = Turn::where('user_id', $id)->get();
+        // This Gate will make sure the current authenticated user is accesing only his game
+        // (No other players info)
+        if (! Gate::allows('player-or-admin', $id)) {
+            abort(403);
+        }
+
+        $plays = Turn::where('user_id', $id)->latest()->get();
 
         return response()->json(['plays'=>$plays, 'code'=>200]);
     }
@@ -174,8 +235,10 @@ class PlayerController extends Controller
 
         $ranking = $players->map->only(['name', 'winning_percentage']);
 
+        $ranking = $ranking->sortByDesc('winning_percentage')->values();
+
         return response()->json([
-            'ranking' => $ranking->sortByDesc('winning_percentage'),
+            'ranking' => $ranking,
             'code' => 200,
         ]);
 

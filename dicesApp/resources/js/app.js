@@ -1,11 +1,17 @@
 require('./bootstrap');
 
 import { createApp } from 'vue';
-import DicesComponent from './components/DicesComponent';
+
+import router from './router';
+
+import App from './components/App';
+
+
+
 
 createApp({
     components: {
-        DicesComponent,
+        App
     }
 
-}).mount('#app');
+}).use(router).mount('#app');

@@ -20,14 +20,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/players/ranking/loser', [PlayerController::class, 'lastPlace']);
+
+Route::get('/players/ranking/winner', [PlayerController::class, 'firstPlace']);
+
+Route::get('/players/ranking', [PlayerController::class, 'playersRanking']);
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::post('/players/anonymous/games/', [PlayerController::class, 'playAnonymous']);
+
+Route::get('/players/anonymous/games/', [PlayerController::class, 'getPlaysAnonymous']);
+
 
 Route::middleware('jwt.auth')->group(function () {
-
-    Route::get('/players/ranking/loser', [PlayerController::class, 'lastPlace']);
-
-    Route::get('/players/ranking/winner', [PlayerController::class, 'firstPlace']);
-
-    Route::get('/players/ranking', [PlayerController::class, 'playersRanking']);
 
     Route::post('/players/{id}/games/', [PlayerController::class, 'play']);
 
@@ -46,11 +54,3 @@ Route::middleware('jwt.auth')->group(function () {
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 
 });
-
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register']);
-
-// Route::group(['middleware' => 'api'], function () {
-    
-    
-// });

@@ -34,15 +34,21 @@ class AuthController extends Controller
             return response()->json([$validator->errors(), 422]);
         }
 
-        $token = JWTAuth::attempt($request->all());
+        $token = JWTAuth::attempt($request->only('email', 'password'));
 
-        if (! $token ) {
-            return response()->json(['error' => 'Unathorized'], 401);
+        if($token) {
+            return response()->json([
+                'success' => true,
+                'token' => $token,
+                'user' => Auth::user(),
+                'userRoleAdmin' => Auth::user()->hasRole('admin')
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'error' => 'Unauthorized'
+            ], 401);
         }
-
-        // dd($token);
-
-        return $this->createNewToken($token);
     }
 
     /**
@@ -61,15 +67,24 @@ class AuthController extends Controller
             return response()->json($validator->erors()->toJson(), 400);
         }
 
-        $user = User::create(array_merge(
-            $validator->validated(),
-            ['password' => bcrypt($request->password)]
-        ));
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
 
+        $token = JWTAuth::attempt($request->only('email', 'password'));
+
+        if ($token) {
+            return $this->login($request);
+        }
+  
         return response()->json([
-            'message' => 'User succesfully created',
-            'user' => $user
-        ], 201);
+            'success' => true,
+            'success' => true,
+            'token' => $token,
+            'user' => Auth::user(),
+        ], 200);
     }
     
     /**

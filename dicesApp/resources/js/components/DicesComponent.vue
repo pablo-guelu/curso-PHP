@@ -2,8 +2,6 @@
 
     <div id="background">
 
-        <h3>DICES</h3>
-
         <div class="dice">
             <ol class="die-list even-roll" data-roll="1" id="die-1">
                 <li class="die-item" data-side="1">
@@ -90,9 +88,14 @@
             rollDice() {
                 const dice = [...document.querySelectorAll(".die-list")];
                 dice.forEach(die => {
+
                 this.toggleClasses(die);
                 die.dataset.roll = this.getRandomNumber(1, 6);
+                console.log(die.dataset.roll);
+                
                 });
+
+                this.$emit('dices-rolled');
             },
 
             toggleClasses(die) {
@@ -126,12 +129,13 @@
     }
 
     #background {
-    background: linear-gradient(#545454, #454545, #676767);
+    background: rgb(123, 188, 214);
     display: grid;
     grid-template-columns: 1fr;
-    height: 100vh;
+    max-height: 40vh;
     overflow: hidden;
     width: 100%;
+    padding-bottom: 10px;
     }
 
     .dice {
