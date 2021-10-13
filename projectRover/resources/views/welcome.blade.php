@@ -68,11 +68,11 @@
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="">Grid X</label>
-                      <input type="number" class="form-control" onchange="gridResizeX(this.value)" id="gridX" placeholder="">
+                      <input type="number" class="form-control" onchange="gridResizeX(this.value, this.id)" id="gridX" placeholder="">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="">Grid Y</label>
-                      <input type="number" class="form-control" onchange="gridResizeY(this.value)" id="gridY" placeholder="">
+                      <input type="number" class="form-control" onchange="gridResizeY(this.value, this.id)" id="gridY" placeholder="">
                     </div>
                   </div>
 
@@ -236,16 +236,21 @@
 
       }
 
-      gridResizeX = (val) => {
+      gridResizeX = (val, id) => {
         roverChart.options.scales.xAxes[0]['ticks']['min'] = - val;
         roverChart.options.scales.xAxes[0]['ticks']['max'] = val;
         roverChart.update();
+
+        roverExplore(val, id);
+
       };
 
-      gridResizeY = (val) => {
+      gridResizeY = (val, id) => {
         roverChart.options.scales.yAxes[0]['ticks']['min'] = - val;
         roverChart.options.scales.yAxes[0]['ticks']['max'] = val;
         roverChart.update();
+
+        roverExplore(val, id);
       };
 
       let roverChart = new Chart('myChart', {
