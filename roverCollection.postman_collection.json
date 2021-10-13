@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "2f277351-733b-4735-b598-d643580b76fd",
+		"name": "roverCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/roverPosition",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"square\": {\r\n        \"width\" : 5,\r\n        \"height\" : 5\r\n    },\r\n    \"rover\" : {\r\n        \"initialOrientation\" : \"W\",\r\n        \"initialPosition\" : {\r\n            \"x\": -3,\r\n            \"y\": 5\r\n        },\r\n        \"commands\":[\"l\", \"l\"]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/roverPosition",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"roverPosition"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
